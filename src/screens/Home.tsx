@@ -2,21 +2,32 @@ import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack/lib/typescript/src/types'
 import { StatusBar } from 'expo-status-bar'
 import { History } from 'lucide-react-native'
-import { ScrollView, Text, TouchableOpacity } from 'react-native'
+import {
+  ActivityIndicator,
+  RefreshControl,
+  TouchableOpacity,
+} from 'react-native'
 
-import { Container, Header, ItemsList } from '@components'
-import { WordsProps } from '@types'
+import { Container, Header, ListItem } from '@components'
+import { useHome } from '@hooks'
+import { FlashList } from '@shopify/flash-list'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
 }
 
 function Home({ navigation }: Props) {
-  function handleGoToItem(term: string) {
-    navigation.navigate('Meaning', { term })
-  }
-
-  const words: WordsProps = []
+  const {
+    pages,
+    isLoading,
+    handleGoToItem,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useHome({
+    navigation,
+  })
 
   return (
     <>
@@ -26,13 +37,29 @@ function Home({ navigation }: Props) {
             <History className='text-black' />
           </TouchableOpacity>
         </Header>
-        {/* words list */}
-        <ScrollView className='flex-1'>
-          <Text className='text-gray-500 uppercase'>all words</Text>
-          {words.map((item, index) => (
-            <ItemsList key={index} item={item} onPressItem={handleGoToItem} />
-          ))}
-        </ScrollView>
+
+        {isLoading ? (
+          <Container>
+            <ActivityIndicator />
+          </Container>
+        ) : (
+          <></>
+        )}
+
+        <FlashList
+          data={pages}
+          estimatedItemSize={57}
+          refreshing={isFetching || isFetchingNextPage}
+          onRefresh={fetchNextPage}
+          refreshControl={
+            <RefreshControl refreshing={isFetching || isFetchingNextPage} />
+          }
+          onEndReached={() => !isFetching && fetchNextPage()}
+          onEndReachedThreshold={0.01}
+          renderItem={({ item: { term }, index }) => (
+            <ListItem key={index} item={term} onPressItem={handleGoToItem} />
+          )}
+        />
       </Container>
       <StatusBar style='auto' />
     </>

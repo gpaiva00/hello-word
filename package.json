@@ -14,6 +14,7 @@
     "@react-navigation/bottom-tabs": "^6.5.12",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
+    "@shopify/flash-list": "1.6.3",
     "@tanstack/react-query": "^5.20.5",
     "classnames": "^2.5.1",
     "expo": "~50.0.6",
@@ -34,6 +35,7 @@
     "@tanstack/eslint-plugin-query": "^5.20.1",
     "@types/react": "~18.2.45",
     "autoprefixer": "^10.4.17",
+    "json-server": "^1.0.0-alpha.23",
     "postcss": "8.4.23",
     "tailwindcss": "3.3.2",
     "typescript": "^5.1.3"

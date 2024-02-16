@@ -4,7 +4,7 @@ type MeaningProps = Array<{
   phonetics: Array<{
     text?: string
     audio: string
-    sourceUrl: string
+    sourceUrl?: string
   }>
   meanings: Array<{
     partOfSpeech: string
@@ -20,4 +20,10 @@ type MeaningProps = Array<{
   sourceUrls: Array<string>
 }>
 
-export type { MeaningProps }
+type MeaningEmpty = {
+  title: string
+  message: string
+  resolution: string
+}
+
+export type { MeaningEmpty, MeaningProps }

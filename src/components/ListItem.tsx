@@ -1,6 +1,5 @@
-import classNames from 'classnames'
 import { ChevronRight } from 'lucide-react-native'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 type Props = {
   item: string
@@ -11,7 +10,7 @@ type Props = {
   }
 }
 
-function ItemsList({ item, onPressItem, rightAction }: Props) {
+function ListItem({ item, onPressItem, rightAction }: Props) {
   return (
     <View className='flex-row items-center justify-between border-b-gray-300 border-b py-4'>
       <TouchableOpacity
@@ -33,4 +32,4 @@ function ItemsList({ item, onPressItem, rightAction }: Props) {
   )
 }
 
-export { ItemsList }
+export { ListItem }
