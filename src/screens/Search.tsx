@@ -1,18 +1,25 @@
-import { Search as SearchIcon } from 'lucide-react-native'
-import { KeyboardAvoidingView, Text, View } from 'react-native'
+import { ParamListBase } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { Hourglass, Search as SearchIcon } from 'lucide-react-native'
+import { Text, View } from 'react-native'
 
-import { Container, Header, ItemsList, TextInput } from '@components'
+import { Container, Header, ListItem, TextInput } from '@components'
+import { useSearch } from '@hooks'
 
-function Search() {
-  // 'Abacate', 'Life', 'McDonalds'
-  const results = []
-  const recentWords = []
+type Props = {
+  navigation: NativeStackNavigationProp<ParamListBase>
+}
 
-  const shouldShowRecentWords = !results.length && !!recentWords.length
-
-  const shouldShowInitialTip = !results.length && !recentWords.length
-
-  function handleGoToItem(term: string) {}
+function Search({ navigation }: Props) {
+  const {
+    results,
+    isSearching,
+    inputText,
+    setInputText,
+    tipText,
+    shouldShowRecentWords,
+    handleGoToItem,
+  } = useSearch({ navigation })
 
   return (
     <Container>
@@ -20,33 +27,38 @@ function Search() {
 
       <View className='flex-1'>
         <TextInput
+          value={inputText}
+          onChange={(value) => setInputText(value.nativeEvent.text)}
           placeholder='What word do you have in mind?'
           returnKeyType='search'
-          icon={<SearchIcon className='text-gray-400 m-0 p-0 mr-2' size={17} />}
+          icon={
+            isSearching ? (
+              <Hourglass className='text-gray-400 m-0 p-0 mr-2' size={17} />
+            ) : (
+              <SearchIcon className='text-gray-400 m-0 p-0 mr-2' size={17} />
+            )
+          }
         />
-        {/* results */}
-        <KeyboardAvoidingView className='flex-1'>
+        <View className='flex-1'>
           {shouldShowRecentWords && (
             <Text className='text-gray-500 uppercase mt-6'>recent</Text>
           )}
 
-          {shouldShowRecentWords &&
+          {/* {shouldShowRecentWords &&
             recentWords.map((item, index) => (
               <ItemsList key={index} item={item} onPressItem={handleGoToItem} />
-            ))}
+            ))} */}
 
-          {shouldShowInitialTip && (
+          {!!tipText?.length && (
             <View className='flex-1 items-center justify-center'>
-              <Text className='text-gray-500'>
-                Start by searching for a word!
-              </Text>
+              <Text className='text-gray-500'>{tipText}</Text>
             </View>
           )}
 
-          {results.map((item, index) => (
-            <ItemsList key={index} item={item} onPressItem={handleGoToItem} />
+          {results?.map((item, index) => (
+            <ListItem key={index} item={item} onPressItem={handleGoToItem} />
           ))}
-        </KeyboardAvoidingView>
+        </View>
       </View>
     </Container>
   )

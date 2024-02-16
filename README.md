@@ -36,6 +36,14 @@ Para este projeto, segui a seguinte linha de pensamento:
 5. **Testes e Depuração**: Realização de testes unitários e de integração para garantir a qualidade e estabilidade do aplicativo. Depuração de erros e correções de bugs conforme necessário. Dou muita prioridade aos testes unitários e E2E, então fiz uma pesquisa das tecnologias que melhor desempenham no React Native.
 6. **Documentação**: Preparação da documentação do projeto, incluindo este README.md, para fornecer informações detalhadas sobre o aplicativo, seu funcionamento e as tecnologias utilizadas. Recorri aos meus desenhos e anotações durante o desenvolvimento para criar um README fácil de entender e que descrevesse meu processo de desenvolvimento.
 
+#### Pontos importantes a se destacar
+
+Durante o desenvolvimento de meus projetos, evito fazer melhorias prematuras, seguindo o princípio de Dun Knuth:
+
+> **premature optimization is the root of all evil**.
+
+Também sigo os princípios YAGNI e KISS, para manter o código o mais limpo e claro possível.
+
 ### COMO INSTALAR E EXECUTAR O PROJETO
 
 1. Faça o clone deste projeto da maneira que preferir.

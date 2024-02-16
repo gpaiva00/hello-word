@@ -3,7 +3,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Trash } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 
-import { Container, Header, ItemsList } from '@components'
+import { Container, Header, ListItem } from '@components'
 import { WordsProps } from '@types'
 
 type Props = {
@@ -35,10 +35,10 @@ function Saved({ navigation }: Props) {
 
         {!shouldShowInitialTip && (
           <ScrollView className='flex-1'>
-            {savedWords.map(({ term }, index) => (
-              <ItemsList
+            {savedWords.map((item, index) => (
+              <ListItem
                 key={index}
-                item={term}
+                item={item}
                 onPressItem={handleGoToItem}
                 rightAction={{
                   icon: <Trash className='text-red-600' />,

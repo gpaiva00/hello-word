@@ -23,7 +23,6 @@ function Home({ navigation }: Props) {
     handleGoToItem,
     isFetching,
     fetchNextPage,
-    hasNextPage,
     isFetchingNextPage,
   } = useHome({
     navigation,
@@ -32,7 +31,7 @@ function Home({ navigation }: Props) {
   return (
     <>
       <Container>
-        <Header title='HelloWord'>
+        <Header title='HelloWord 👋'>
           <TouchableOpacity onPress={() => navigation.navigate('History')}>
             <History className='text-black' />
           </TouchableOpacity>
@@ -56,8 +55,8 @@ function Home({ navigation }: Props) {
           }
           onEndReached={() => !isFetching && fetchNextPage()}
           onEndReachedThreshold={0.01}
-          renderItem={({ item: { term }, index }) => (
-            <ListItem key={index} item={term} onPressItem={handleGoToItem} />
+          renderItem={({ item, index }) => (
+            <ListItem key={index} item={item} onPressItem={handleGoToItem} />
           )}
         />
       </Container>
