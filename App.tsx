@@ -1,25 +1,27 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider, createStore } from 'jotai'
+import { StrictMode } from 'react'
 import { RootSiblingParent } from 'react-native-root-siblings'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AppRoutes } from './src/routes'
 
 const store = createStore()
-
 const queryClient = new QueryClient()
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
         <RootSiblingParent>
           <NavigationContainer>
-            <AppRoutes />
+            <Provider store={store}>
+              <AppRoutes />
+            </Provider>
           </NavigationContainer>
         </RootSiblingParent>
-      </Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </StrictMode>
   )
 }
 

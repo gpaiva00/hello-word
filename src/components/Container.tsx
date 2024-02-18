@@ -5,7 +5,7 @@ type Props = {
 }
 
 function Container({ children }: Props) {
-  return <View className='flex-1 px-4 pt-14 pb-4'>{children}</View>
+  return <View className='flex-1 px-4 pt-14'>{children}</View>
 }
 
 export { Container }

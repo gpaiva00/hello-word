@@ -1,14 +1,19 @@
-import { MeaningProps } from '@types'
-import { useDictionaryService } from 'hooks/useDictionaryService'
+import { useAtom } from 'jotai'
 import { useEffect, useMemo, useState } from 'react'
+
+import { useDictionaryService } from 'hooks/useDictionaryService'
+import { savedWordsAtom } from 'hooks/useSavedWords'
+
+import { MeaningProps, WordProps } from '@types'
 
 type MeaningsOnly = MeaningProps[number]['meanings']
 
-function useMeaning(term: Readonly<string | undefined>) {
+function useMeaning(item: Readonly<WordProps | undefined>) {
   const [isPlaying, setIsPlaying] = useState<null | number>(null)
+  const [savedWords, setSavedWords] = useAtom(savedWordsAtom)
 
   const { data, isError, isLoading, isFetching, refetch } =
-    useDictionaryService(term)
+    useDictionaryService(item?.term)
 
   // Normalize API output
   const formattedData = useMemo(() => (Array.isArray(data) ? data : []), [data])
@@ -23,9 +28,19 @@ function useMeaning(term: Readonly<string | undefined>) {
     [isFetching, isLoading]
   )
 
+  const isWordSaved = useMemo(
+    () => savedWords.some(({ id }) => id === item?.id),
+    [savedWords, item]
+  )
+
+  const resultNotFound = useMemo(
+    () => !isSearchingMeaning && !formattedData.length,
+    [isSearchingMeaning, formattedData]
+  )
+
   useEffect(() => {
     refetch()
-  }, [term])
+  }, [item])
 
   function handlePlayPhonetic({
     audio,
@@ -39,16 +54,25 @@ function useMeaning(term: Readonly<string | undefined>) {
     // TODO: play audio with some lib
   }
 
+  function handleSaveWord() {
+    setSavedWords(async (prev) => [...(await prev), item as WordProps])
+  }
+
   return {
     dictionary: {
-      general: formattedData,
+      general: {
+        formattedData,
+        isSaved: isWordSaved,
+      },
       meanings,
     },
-    handlePlayPhonetic,
     isError,
+    isFetching,
     isPlaying,
     isSearchingMeaning,
-    resultNotFound: !isSearchingMeaning && !formattedData.length,
+    resultNotFound,
+    handlePlayPhonetic,
+    handleSaveWord,
   }
 }
 

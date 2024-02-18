@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 
 import { Container, Header } from '@components'
-import { LanguageProps } from '@types'
+import { LanguageProps, WordProps } from '@types'
 
 import { useMeaning } from '@hooks'
 import { thereIsPhoneticForTerm, whereIsAudioFrom } from '@utils'
@@ -31,24 +31,29 @@ const languagesMap = {
 }
 
 function Meaning({ route, navigation }: Props) {
-  const params = route?.params as Readonly<{ term: string } | undefined>
+  const params = route?.params as Readonly<{ item: WordProps } | undefined>
 
   const {
     dictionary,
+    isPlaying,
+    isFetching,
     isSearchingMeaning,
     resultNotFound,
-    isPlaying,
     handlePlayPhonetic,
-  } = useMeaning(params?.term)
+    handleSaveWord,
+  } = useMeaning(params?.item)
 
   return (
     <Container>
       <Header title='Meaning of' navigation={navigation}>
-        {resultNotFound ? (
+        {resultNotFound || isFetching ? (
           <></>
         ) : (
-          <TouchableOpacity>
-            <Bookmark className='text-black' />
+          <TouchableOpacity onPress={handleSaveWord}>
+            <Bookmark
+              className='text-black'
+              fill={dictionary.general.isSaved ? '#000' : '#fff'}
+            />
           </TouchableOpacity>
         )}
       </Header>
@@ -59,7 +64,7 @@ function Meaning({ route, navigation }: Props) {
           <Text className='text-gray-500 text-center'>
             Sorry, could not find a meaning for
           </Text>
-          <Text className='font-bold text-gray-600'>"{params?.term}"</Text>
+          <Text className='font-bold text-gray-600'>"{params?.item.term}"</Text>
         </View>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -72,20 +77,20 @@ function Meaning({ route, navigation }: Props) {
               <View
                 className={classNames('flex-row items-end gap-2', {
                   'mb-6': thereIsPhoneticForTerm(
-                    dictionary.general[0]?.phonetics ?? []
+                    dictionary.general.formattedData[0]?.phonetics ?? []
                   ),
                 })}>
                 <Text className='font-extrabold text-3xl'>
-                  {dictionary.general[0]?.word}
+                  {dictionary.general.formattedData[0]?.word}
                 </Text>
                 <Text className='text-gray-500'>
-                  {dictionary.general[0]?.phonetic}
+                  {dictionary.general.formattedData[0]?.phonetic}
                 </Text>
               </View>
 
               {/* phonetic audio */}
               <View className='w-full border-b border-gray-300 pb-6 mb-4'>
-                {dictionary.general[0]?.phonetics.map(
+                {dictionary.general.formattedData[0]?.phonetics.map(
                   ({ audio, text }, index) => {
                     const language = whereIsAudioFrom(audio)
 
@@ -113,7 +118,7 @@ function Meaning({ route, navigation }: Props) {
                             {text?.length
                               ? text
                               : dictionary.general
-                              ? dictionary.general[0]?.phonetic
+                              ? dictionary.general.formattedData[0]?.phonetic
                               : 'no phonetic'}
                           </Text>
                         </TouchableOpacity>

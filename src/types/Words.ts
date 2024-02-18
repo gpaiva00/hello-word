@@ -1,6 +1,8 @@
-type WordsProps = Array<{
+type WordsProps = Array<WordProps>
+
+type WordProps = {
   id: number
   term: string
-}>
+}
 
-export type { WordsProps }
+export type { WordProps, WordsProps }

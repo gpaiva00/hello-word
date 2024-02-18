@@ -1,6 +1,7 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
+import { WordProps } from '@types'
 import { useLoadWordsService } from '../useLoadWordsService'
 
 type Props = {
@@ -18,8 +19,8 @@ function useHome({ navigation }: Props) {
     hasNextPage,
   } = useLoadWordsService()
 
-  function handleGoToItem(term: string) {
-    navigation.navigate('Meaning', { term })
+  function handleGoToItem(item: WordProps) {
+    navigation.navigate('Meaning', { item })
   }
 
   return {

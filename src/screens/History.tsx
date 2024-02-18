@@ -3,7 +3,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Trash } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 
-import { Container, Header, ItemsList } from '@components'
+import { Container, Header, ListItem } from '@components'
+import { WordProps, WordsProps } from '@types'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
@@ -12,10 +13,10 @@ type Props = {
 function History({ navigation }: Props) {
   function handleDeleteItem(id: string) {}
 
-  function handleGoToItem(term: string) {}
+  function handleGoToItem(item: WordProps) {}
 
-  const savedWords = []
-  const shouldShowInitialTip = !savedWords.length
+  const history: WordsProps = []
+  const shouldShowInitialTip = !history.length
 
   return (
     <Container>
@@ -33,8 +34,8 @@ function History({ navigation }: Props) {
 
         {!shouldShowInitialTip && (
           <ScrollView className='flex-1'>
-            {['Abacate', 'Life', 'McDonalds'].map((item, index) => (
-              <ItemsList
+            {history.map((item, index) => (
+              <ListItem
                 key={index}
                 item={item}
                 onPressItem={handleGoToItem}

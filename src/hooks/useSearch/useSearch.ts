@@ -2,6 +2,7 @@ import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useEffect, useMemo, useState } from 'react'
 
+import { WordProps } from '@types'
 import { useSearchService } from '../useSearchService'
 
 type Props = {
@@ -28,8 +29,8 @@ function useSearch({ navigation }: Props) {
     refetch()
   }, [inputText])
 
-  function handleGoToItem(term: string) {
-    navigation.navigate('Meaning', { term })
+  function handleGoToItem(item: WordProps) {
+    navigation.navigate('Meaning', { item })
   }
 
   return {
