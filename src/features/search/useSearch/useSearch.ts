@@ -3,7 +3,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useEffect, useMemo, useState } from 'react'
 
 import { WordProps } from '@types'
-import { useSearchService } from '../useSearchService'
+
+import { useSearchService } from '@features'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

@@ -1,12 +1,14 @@
 import { useAtom } from 'jotai'
 import { useEffect, useMemo, useState } from 'react'
 
+import { useDictionaryService } from '@common'
+
 import {
   checkIfItemExistsInHistory,
+  checkIfWordIsAlreadySaved,
   historyAtom,
-} from 'features/history/useHistory'
-import { useDictionaryService } from 'hooks/useDictionaryService'
-import { checkIfWordIsAlreadySaved, savedWordsAtom } from 'hooks/useSavedWords'
+  savedWordsAtom,
+} from '@features'
 
 import { MeaningProps, WordProps } from '@types'
 

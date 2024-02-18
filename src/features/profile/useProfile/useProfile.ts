@@ -1,0 +1,3 @@
+function useProfile() {}
+
+export { useProfile }

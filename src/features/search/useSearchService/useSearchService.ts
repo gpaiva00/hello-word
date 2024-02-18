@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+
 import { WordsProps } from '@types'
 
 async function fetchTerms(term: string): Promise<WordsProps> {

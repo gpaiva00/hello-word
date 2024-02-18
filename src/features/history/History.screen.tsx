@@ -1,12 +1,13 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Trash } from 'lucide-react-native'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
-
-import { useHistory } from '@hooks'
 import classNames from 'classnames'
-import { Container, Header, ListItem } from 'common/components'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { ConfirmDialog } from 'react-native-simple-dialogs'
+
+import { Container, Header, ListItem } from '@common'
+import { useHistory } from '@features'
+
+import { Trash } from 'lucide-react-native'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

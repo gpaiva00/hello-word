@@ -1,17 +1,18 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Trash } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 import { ConfirmDialog } from 'react-native-simple-dialogs'
 
-import { useSavedWords } from '@hooks'
-import { Container, Header, ListItem } from 'common/components'
+import { Container, Header, ListItem } from '@common'
+import { useSavedWords } from '@features'
+
+import { Trash } from 'lucide-react-native'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
 }
 
-function Saved({ navigation }: Props) {
+function SavedWords({ navigation }: Props) {
   const {
     handleDeleteSavedWord,
     handleGoToItem,
@@ -81,4 +82,4 @@ function Saved({ navigation }: Props) {
   )
 }
 
-export default Saved
+export default SavedWords

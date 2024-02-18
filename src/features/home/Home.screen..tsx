@@ -1,16 +1,17 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack/lib/typescript/src/types'
+import { FlashList } from '@shopify/flash-list'
 import { StatusBar } from 'expo-status-bar'
-import { History } from 'lucide-react-native'
 import {
   ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
 } from 'react-native'
 
-import { useHome } from '@hooks'
-import { FlashList } from '@shopify/flash-list'
-import { Container, Header, ListItem } from 'common/components'
+import { Container, Header, ListItem } from '@common'
+import { useHome } from '@features'
+
+import { History } from 'lucide-react-native'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

@@ -2,7 +2,7 @@ import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import { WordProps } from '@types'
-import { useLoadWordsService } from '../../../hooks/useLoadWordsService'
+import { useLoadWordsService } from '../../../common/services/useLoadWordsService'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

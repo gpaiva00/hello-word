@@ -8,6 +8,7 @@ import { WordProps, WordsProps } from '@types'
 import { useState } from 'react'
 
 const storage = createJSONStorage(() => AsyncStorage)
+// @ts-ignore
 const savedWordsAtom = atomWithStorage<WordsProps>('@user-/saved', [], storage)
 
 type Props = {

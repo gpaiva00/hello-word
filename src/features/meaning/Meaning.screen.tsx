@@ -1,6 +1,6 @@
 import { ParamListBase, RouteProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Bookmark, PlayCircle, SearchX, Volume2 } from 'lucide-react-native'
+import classNames from 'classnames'
 import {
   ActivityIndicator,
   ScrollView,
@@ -10,14 +10,20 @@ import {
 } from 'react-native'
 
 import { LanguageProps, WordProps } from '@types'
-import { Container, Header } from 'common/components'
 
-import { useMeaning } from '@hooks'
-import { thereIsPhoneticForTerm, whereIsAudioFrom } from '@utils'
+import {
+  Container,
+  Header,
+  thereIsPhoneticForTerm,
+  whereIsAudioFrom,
+} from '@common'
+import { useMeaning } from '@features'
+
+import { Bookmark, PlayCircle, SearchX, Volume2 } from 'lucide-react-native'
+
 import AustraliaIcon from 'assets/icons/au'
 import UnitedKingdomIcon from 'assets/icons/gb'
 import UnitedStatesIcon from 'assets/icons/us'
-import classNames from 'classnames'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

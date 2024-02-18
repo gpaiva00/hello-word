@@ -1,10 +1,11 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Hourglass, Search as SearchIcon } from 'lucide-react-native'
 import { Text, View } from 'react-native'
 
-import { useSearch } from '@hooks'
-import { Container, Header, ListItem, TextInput } from 'common/components'
+import { Container, Header, ListItem, TextInput } from '@common'
+import { useSearch } from '@features'
+
+import { Hourglass, Search as SearchIcon } from 'lucide-react-native'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
