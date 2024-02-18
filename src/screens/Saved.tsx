@@ -19,7 +19,6 @@ function Saved({ navigation }: Props) {
     handleSelectItem,
     savedWords,
     showDialog,
-    setShowDialog,
     toggleDialog,
   } = useSavedWords({ navigation })
 

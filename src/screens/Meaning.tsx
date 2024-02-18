@@ -46,16 +46,20 @@ function Meaning({ route, navigation }: Props) {
   return (
     <Container>
       <Header title='Meaning of' navigation={navigation}>
-        {resultNotFound || isFetching ? (
-          <></>
-        ) : (
-          <TouchableOpacity onPress={handleSaveWord}>
-            <Bookmark
-              className='text-black'
-              fill={dictionary.general.isSaved ? '#000' : '#fff'}
-            />
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity
+          onPress={handleSaveWord}
+          disabled={resultNotFound || isFetching}>
+          <Bookmark
+            className={classNames('text-black', {
+              'text-gray-300': resultNotFound || isFetching,
+            })}
+            fill={
+              !isFetching && dictionary.general.isSaved
+                ? 'black'
+                : 'transparent'
+            }
+          />
+        </TouchableOpacity>
       </Header>
 
       {resultNotFound ? (

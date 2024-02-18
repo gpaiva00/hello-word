@@ -1,27 +1,68 @@
 import { ParamListBase } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Trash } from 'lucide-react-native'
-import { ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import { Container, Header, ListItem } from '@components'
-import { WordProps, WordsProps } from '@types'
+import { useHistory } from '@hooks'
+import classNames from 'classnames'
+import { ConfirmDialog } from 'react-native-simple-dialogs'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
 }
 
 function History({ navigation }: Props) {
-  function handleDeleteItem(id: string) {}
-
-  function handleGoToItem(item: WordProps) {}
-
-  const history: WordsProps = []
-  const shouldShowInitialTip = !history.length
+  const {
+    history,
+    shouldShowInitialTip,
+    handleGoToItem,
+    showDialog,
+    handleClearHistory,
+    toggleDialog,
+  } = useHistory({
+    navigation,
+  })
 
   return (
     <Container>
-      {/* header */}
-      <Header title='History' navigation={navigation} />
+      <ConfirmDialog
+        title='Clear All History'
+        titleStyle={{
+          fontWeight: 'bold',
+        }}
+        message='Are you sure you want to clear your history?'
+        visible={showDialog}
+        onTouchOutside={toggleDialog}
+        positiveButton={{
+          title: 'Yes, clear all',
+          onPress: handleClearHistory,
+          style: {
+            // @ts-ignore
+            color: '#dc2626',
+          },
+        }}
+        negativeButton={{
+          title: 'Cancel',
+          onPress: toggleDialog,
+          style: {
+            // @ts-ignore
+            color: '#000',
+          },
+        }}
+      />
+
+      <Header title='History' navigation={navigation}>
+        <TouchableOpacity
+          onPress={toggleDialog}
+          disabled={shouldShowInitialTip}>
+          <Trash
+            className={classNames('text-red-600', {
+              'text-gray-300': shouldShowInitialTip,
+            })}
+          />
+        </TouchableOpacity>
+      </Header>
 
       <View className='flex-1'>
         {shouldShowInitialTip && (
@@ -35,15 +76,7 @@ function History({ navigation }: Props) {
         {!shouldShowInitialTip && (
           <ScrollView className='flex-1'>
             {history.map((item, index) => (
-              <ListItem
-                key={index}
-                item={item}
-                onPressItem={handleGoToItem}
-                rightAction={{
-                  icon: <Trash className='text-red-600' />,
-                  onPress: handleDeleteItem,
-                }}
-              />
+              <ListItem key={index} item={item} onPressItem={handleGoToItem} />
             ))}
           </ScrollView>
         )}

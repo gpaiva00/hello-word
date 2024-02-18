@@ -14,6 +14,16 @@ type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
 }
 
+function checkIfWordIsAlreadySaved({
+  item,
+  savedWords,
+}: {
+  item: Readonly<WordProps | undefined>
+  savedWords: WordsProps
+}) {
+  return savedWords.some(({ id }) => id === item?.id)
+}
+
 function useSavedWords({ navigation }: Props) {
   const [showDialog, setShowDialog] = useState(false)
   const [selectedItem, setSelectedItem] = useState<WordProps | null>(null)
@@ -55,4 +65,4 @@ function useSavedWords({ navigation }: Props) {
   }
 }
 
-export { savedWordsAtom, useSavedWords }
+export { checkIfWordIsAlreadySaved, savedWordsAtom, useSavedWords }
