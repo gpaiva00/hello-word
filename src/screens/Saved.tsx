@@ -4,8 +4,8 @@ import { Trash } from 'lucide-react-native'
 import { ScrollView, Text, View } from 'react-native'
 import { ConfirmDialog } from 'react-native-simple-dialogs'
 
-import { Container, Header, ListItem } from '@components'
 import { useSavedWords } from '@hooks'
+import { Container, Header, ListItem } from 'common/components'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>

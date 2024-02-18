@@ -3,8 +3,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Hourglass, Search as SearchIcon } from 'lucide-react-native'
 import { Text, View } from 'react-native'
 
-import { Container, Header, ListItem, TextInput } from '@components'
 import { useSearch } from '@hooks'
+import { Container, Header, ListItem, TextInput } from 'common/components'
 
 type Props = {
   navigation: NativeStackNavigationProp<ParamListBase>
