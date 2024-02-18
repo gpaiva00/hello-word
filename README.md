@@ -17,7 +17,8 @@ A seguir, uma lista das tecnologias adotadas para este projeto e o porquê de ca
 
 ### TECNOLOGIAS (BACKEND)
 
-- **Firebase**: oferece banco de dados real-time, no SQL e gerencia de forma segura e performática o cache das informações. Assim, é possível criar uma aplicação offline-first sem complicações.
+- **json-server**: um banco de dados baseado no formato JSON. Com isso, é possível criar um servidor local baseado num arquivo `.json`.
+- **react-query**: uma biblioteca poderosa com gerenciamento de estado e queries de forma declarativa.
 
 ### WIREFRAME
 
