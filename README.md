@@ -4,7 +4,8 @@
 
 Minimal Dictionary App
 
-<img src="https://i.ibb.co/gmgq3h2/demo.gif" alt="demo">
+<a href="https://ibb.co/DzKctTJ"><img src="https://i.ibb.co/DzKctTJ/demo.gif" alt="demo" border="0"></a>
+Click to view a demo. 👆
 
 <hr />
 
