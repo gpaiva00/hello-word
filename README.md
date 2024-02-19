@@ -1,12 +1,12 @@
 > This is a challenge by Coodesh
 
-# HelloWord
+# HelloWord | Minimal Dictionary App
 
-Minimal Dictionary App
-
-<center>
-<a href="https://ibb.co/DzKctTJ"><img src="https://i.ibb.co/gmgq3h2/demo.gif" alt="demo" border="0"></a>
-</center>
+<div>
+<img src="./public/demo1.png" width="200" height="360"/>
+<img src="./public/demo2.png" width="200" height="360"/>
+<img src="./public/demo3.png" width="200" height="360"/>
+</div>
 <hr />
 
 ### DESCRIÇÃO DO PROJETO
