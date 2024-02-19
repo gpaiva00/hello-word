@@ -4,7 +4,7 @@
 
 Minimal Dictionary App
 
-<a href="https://ibb.co/DzKctTJ"><img src="https://i.ibb.co/gmgq3h2/demo.gif" alt="demo" border="0"></a>
+<img src="https://i.ibb.co/gmgq3h2/demo.gif" alt="demo">
 
 <hr />
 
