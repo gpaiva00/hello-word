@@ -64,4 +64,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export { Profile }

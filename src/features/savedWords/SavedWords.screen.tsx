@@ -82,4 +82,4 @@ function SavedWords({ navigation }: Props) {
   )
 }
 
-export default SavedWords
+export { SavedWords }

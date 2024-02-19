@@ -65,4 +65,4 @@ function Search({ navigation }: Props) {
   )
 }
 
-export default Search
+export { Search }

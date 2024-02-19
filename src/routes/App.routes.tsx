@@ -8,7 +8,7 @@ import {
   User,
 } from 'lucide-react-native'
 
-import { History, Home, Meaning, Profile, Saved, Search } from '@screens'
+import { History, Home, Meaning, Profile, SavedWords, Search } from '@features'
 
 const Tab = createBottomTabNavigator()
 const HomeStack = createNativeStackNavigator()
@@ -68,7 +68,7 @@ function AppRoutes() {
       />
       <Tab.Screen
         name='Saved'
-        component={Saved}
+        component={SavedWords}
         options={{
           tabBarIcon: ({ focused }) => (
             <Bookmark

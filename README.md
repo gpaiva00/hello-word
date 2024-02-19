@@ -1,5 +1,14 @@
 > This is a challenge by Coodesh
 
+# HelloWord
+
+Minimal Dictionary App
+
+<center>
+<a href="https://ibb.co/DzKctTJ"><img src="https://i.ibb.co/gmgq3h2/demo.gif" alt="demo" border="0"></a>
+</center>
+<hr />
+
 ### DESCRIÇÃO DO PROJETO
 
 O HelloWord é um aplicativo móvel que permite aos usuários visualizarem e gerenciarem palavras em inglês, fornecidas pela API Free Dictionary.

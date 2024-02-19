@@ -86,4 +86,4 @@ function History({ navigation }: Props) {
   )
 }
 
-export default History
+export { History }

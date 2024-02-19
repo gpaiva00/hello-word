@@ -66,4 +66,4 @@ function Home({ navigation }: Props) {
   )
 }
 
-export default Home
+export { Home }

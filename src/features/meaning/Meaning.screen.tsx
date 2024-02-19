@@ -185,4 +185,4 @@ function Meaning({ route, navigation }: Props) {
   )
 }
 
-export default Meaning
+export { Meaning }
